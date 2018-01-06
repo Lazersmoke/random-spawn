@@ -47,7 +47,7 @@ public class RespawnListener implements Listener{
 		List<String> spawnPointFlags = plugin.yamlHandler.worlds.getStringList(worldName + ".spawnpointson");
 				
 		if (event.isBedSpawn() && !randomSpawnFlags.contains("bedrespawn")){  		// checks if player should be spawned at his bed
-			BlockPosition pos = ((CraftPlayer)event.getPlayer()).getHandle().getBed();
+			BlockPosition pos = ((CraftPlayer)event.getPlayer()).getHandle().bedPosition;
 			if (pos != null) {
 				Block bed = new Location(event.getRespawnLocation().getWorld(), pos.getX(), pos.getY(), pos.getZ()).getBlock();
 				if(bed.getType() == Material.BED_BLOCK) {
